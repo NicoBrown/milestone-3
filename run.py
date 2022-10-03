@@ -1,7 +1,3 @@
-"""
-app.py
-"""
-
 #import dependencies
 import os
 from baby_journal import app

@@ -1,5 +1,10 @@
 {
    "python.linting.pylintEnabled": true,
+   "python.linting.pylintArgs": [
+      "--load-plugins",
+      "pylint_flask_sqlalchemy",
+      "pylint_flask",
+   ],
    "python.linting.enabled": true,
    "python.linting.pep8Enabled": false,
    "python.linting.flake8Enabled": true,
@@ -14,13 +19,21 @@
       "**/.gitp*": true,
       "**/.hg": true,
       "**/.svn": true,
+      "**/.gitpod.yml": true,
       "**/.vscode": true,
       "**/core.Microsoft*": true,
       "**/core.mongo*": true,
       "**/core.python*": true,
-      "**/CVS": true
+      "**/CVS": true,
+      "**/.json": true,
+      "**/.yml": true,
    },
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "HookyQR.beautify",
+   "cSpell.words": [
+      "backref",
+      "ondelete",
+      "SQLALCHEMY"
+   ]
 }

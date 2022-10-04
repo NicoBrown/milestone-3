@@ -25,7 +25,7 @@ def login():
     if request.method == "POST":
         # check if Username exists in db
         existing_user = User.query.filter_by(
-            email=request.form.get("email").lower()).first()
+            email == request.form.get("email").lower()).first()
 
         if existing_user:
             # ensure hashed password matches user input
@@ -52,7 +52,7 @@ def register():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = User.query.filter_by(
-            email=request.form.get("email").lower()).first()
+            email == request.form.get("email").lower()).first()
 
         if existing_user:
             flash("email address already exists")
@@ -80,15 +80,21 @@ def register():
 def children_home():
     if "email" in session:
 
-        childrenlist = User.query.filter_by(
-            User.email == session["email"])
-        # return list of children
-        if (childrenlist):
-            return render_template("children_home.html", children=childrenlist.children_list)
+        useremail = session.get("email")
+
+        user = User.query.filter_by(
+            email=useremail).first()
+
+        childrenlists = Children.query.filter_by(
+            parent_id=user.id).all()
+
+       # return list of children
+        if (childrenlists):
+            return render_template("children_home.html", children=childrenlists)
         else:
             return render_template("children_home.html")
 
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 @ app.route("/add_child", methods=["GET", "POST"])
@@ -102,11 +108,17 @@ def add_child():
             flash("child name already exists")
             return redirect(url_for("add_child"))
 
+        useremail = session.get("email")
+
+        user = User.query.filter_by(
+            email=useremail).first()
+
         child_record = Children(
             first_name=request.form.get("first_name").lower(),
             last_name=request.form.get("last_name").lower(),
             allergies=request.form.get("allergies").lower(),
             date_of_birth=request.form.get("date_of_birth").lower(),
+            parent_id=user.id,
         )
 
         db.session.add(child_record)

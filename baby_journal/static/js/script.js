@@ -4,4 +4,7 @@ $(document).ready(function () {
     });
     $('.parallax').parallax();
     $(".collapsible").collapsible();
+    $('input').characterCounter();
+    $('.fixed-action-btn').floatingActionButton()
+    $('.datepicker').datepicker();
 });

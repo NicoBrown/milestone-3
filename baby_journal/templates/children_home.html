@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<ul class="collection" id="child_list">
-    {% for child in children %}
-    <li class="collection-item avatar">
-        <span class="title">{{ child.first_name }}</span>
-        <p>First Line <br>
-            Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">View Records</i></a>
-        <a href="#!" class="secondary-content"><i class="material-icons">View Records</i></a>
-    </li>
-    {% endfor %}
-</ul>
-<div id="button_div" class="row">
-    <a href="{{ url_for('add_child') }}" class="btn waves-effect waves-light btn-floating btn-large right"
-        id="add_child"><i class="material-icons">add</i></a>
+<div class="row container">
+    <ul class="collection col  s12" id="child_list">
+        {% for child in children %}
+        <li class="collection-item avatar">
+            <span>
+                <i class="circle">{{ child.first_name[0].upper() }}</i>
+                <h4 class="">{{ child.first_name.capitalize() }} {{child.last_name.capitalize() }}</h4>
+            </span>
+            <a href="{{ url_for('child_home', child_id=child.id ) }}" class="primary-content"><i
+                    class="material-icons">View Records</i></a>
+            <a href="{{ url_for('delete_child', child_id=child.id) }}" class="secondary-content"><i
+                    class="fa fa-xl fa-trash"></i></a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div id="button_div" class="row">
+        <a href="{{ url_for('add_child') }}" class="btn waves-effect waves-light btn-floating btn-large right"
+            id="add_child"><i class="material-icons">add</i></a>
+    </div>
 </div>
-
 {% endblock %}

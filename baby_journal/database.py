@@ -29,9 +29,9 @@ class Children(db.Model):
     parent_id = db.Column(db.Integer, db.ForeignKey(
         "user.id", ondelete="CASCADE"))
 
-    def __str__(self):
+    def __repr__(self):
         # __repr__ to represent self as a string
-        return self
+        return f"  # {self.id}{self.allergies}{self.date_of_birth}{self.first_name}{self.parent_id}{self.last_name}"
 
 
 class Records(db.Model):

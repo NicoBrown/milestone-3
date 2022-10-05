@@ -25,7 +25,7 @@ def login():
     if request.method == "POST":
         # check if Username exists in db
         existing_user = User.query.filter_by(
-            email == request.form.get("email").lower()).first()
+            email=request.form.get("email").lower()).first()
 
         if existing_user:
             # ensure hashed password matches user input
@@ -52,7 +52,7 @@ def register():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = User.query.filter_by(
-            email == request.form.get("email").lower()).first()
+            email=request.form.get("email").lower()).first()
 
         if existing_user:
             flash("email address already exists")
@@ -97,6 +97,12 @@ def children_home():
     return redirect(url_for("home"))
 
 
+@ app.route("/child_home/<child_id>", methods=["GET", "POST"])
+def child_home(child_id):
+
+    return redirect(url_for("child_home"))
+
+
 @ app.route("/add_child", methods=["GET", "POST"])
 def add_child():
     if request.method == "POST":
@@ -128,6 +134,20 @@ def add_child():
         return redirect(url_for("children_home"))
 
     return render_template("add_child.html")
+
+
+@ app.route("/children_home/<int:child_id>", methods=["GET", "POST"])
+def delete_child(child_id):
+
+    child_record = Children.query.filter(
+        Children.id == child_id).first()
+
+    db.session.delete(child_record)
+
+    db.session.commit()
+
+    flash("child removed Successfully!")
+    return render_template("children_home.html")
 
 
 @ app.route("/logout")

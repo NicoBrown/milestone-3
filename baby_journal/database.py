@@ -39,9 +39,10 @@ class Records(db.Model):
 
     __tablename__ = "records"
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), unique=True, nullable=False)
+    title = db.Column(db.String(50), nullable=False)
+    activity = db.Column(db.String(50), nullable=False)
     notes = db.Column(db.Text, nullable=True)
-    duration = db.Column(db.Integer, nullable=False)
+    duration = db.Column(db.Integer, nullable=True)
     date_time = db.Column(db.DateTime, nullable=False)
     units = db.Column(db.String(30), nullable=True)
     quantity = db.Column(db.Float, nullable=True)

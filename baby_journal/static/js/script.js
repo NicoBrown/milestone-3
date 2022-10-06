@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('input').characterCounter();
     $('.fixed-action-btn').floatingActionButton()
     $('.datepicker').datepicker();
-
+    $('select').formSelect();
 });
 
 window.setTimeout(function () {

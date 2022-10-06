@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="container">
-    <h3 class="center-align">Add New Record</h3>
+    <h3 class="center-align">Edit Record</h3>
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_record', child_id=child_id) }}">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('edit_record', record_id=record.id) }}">
             <div class="card-panel">
                 <!-- title -->
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="record_title" name="title" type="text" minlength="4" maxlength="50" required
                             data-length="50">
-                        <label for="title">Title</label>
+                        <label for="title">Existing title: {{ record.title}}</label>
                     </div>
                 </div>
                 <!-- activity type -->
@@ -25,14 +25,14 @@
                             <option value="nappies">Nappies</option>
                             <option value="weight">weight</option>
                         </select>
-                        <label for="activity">Select Activity</label>
+                        <label for="activity">Existing Activity: {{ record.activity }}</label>
                     </div>
                 </div>
                 <!-- duration -->
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="duration" name="duration" type="text" minlength="0" maxlength="50" data-length="50">
-                        <label for="duration">Duration in minutes (optional)</label>
+                        <label for="duration">Existing Duration: {{ record.duration}} minutes</label>
                     </div>
                 </div>
                 <!-- duration -->
@@ -40,7 +40,7 @@
                     <div class="input-field col s6">
                         <input id="quantity" name="quantity" type="number" minlength="0" maxlength="5" data-length="5"
                             validate>
-                        <label for="quantity">Quantity (optional)</label>
+                        <label for="quantity">Existing Quantity: {{ record.quantity}}</label>
                     </div>
                     <!-- units -->
                     <div class="input-field col s5 offset-s1">
@@ -52,14 +52,14 @@
                             <option value="oz">ounces</option>
                             <option value=" ">number</option>
                         </select>
-                        <label for="units">Select units</label>
+                        <label for="units">Existing Units: {{ record.units }}</label>
                     </div>
                 </div>
                 <!-- location -->
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="location" name="location" type="text" minlength="0" maxlength="50" data-length="50">
-                        <label for="location">Location (optional)</label>
+                        <label for="location">Existing Location: {{ record.location }}</label>
                     </div>
                 </div>
                 <!-- notes -->
@@ -67,7 +67,7 @@
                     <div class="input-field col s12">
                         <textarea id="notes" name="notes" type="text" minlength="0" maxlength="50"
                             data-length="50"></textarea>
-                        <label for="notes">Notes (optional)</label>
+                        <label for="notes">Existing Notes: {{ record.notes }}</label>
                     </div>
                 </div>
                 <!-- add child -->
@@ -77,7 +77,7 @@
                         Cancel<i class="fa-solid fa-circle-xmark right"></i>
                     </a>
                     <button type="submit" class="col s4 offset-s2 btn-large indigo lighten-2 text-shadow">
-                        Add record<i class="fa-solid fa-circle-plus right"></i>
+                        Edit record<i class="fa-solid fa-circle-plus right"></i>
                     </button>
                 </div>
             </div>

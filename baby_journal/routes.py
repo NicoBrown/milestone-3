@@ -9,6 +9,7 @@ from flask import (Flask, render_template, request,
 from baby_journal import app, db
 from baby_journal.database import Children, Records, User
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date
 
 from jinja2 import TemplateNotFound
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -97,10 +98,62 @@ def children_home():
     return redirect(url_for("home"))
 
 
-@ app.route("/child_home/<child_id>", methods=["GET", "POST"])
+@ app.route("/child_home/<int:child_id>", methods=["GET", "POST"])
 def child_home(child_id):
 
-    return redirect(url_for("child_home"))
+    child_records = Records.query.filter_by(
+        child_id=child_id).all()
+
+    return render_template("child_home.html", records=child_records, child_id=child_id)
+
+
+@ app.route("/add_record/<child_id>", methods=["GET", "POST"])
+def add_record(child_id):
+    if request.method == "POST":
+
+        record = Records(
+            title=request.form.get("title").lower(),
+            activity=request.form.get("activity"),
+            duration=request.form.get("duration"),
+            quantity=request.form.get("quantity"),
+            units=request.form.get("units"),
+            location=request.form.get("location"),
+            notes=request.form.get("notes"),
+            date_time=date.today(),
+            child_id=child_id,
+        )
+
+        db.session.add(record)
+        db.session.commit()
+
+        flash("Record Added Successfully!")
+        return redirect(url_for("child_home", child_id=child_id))
+
+    return render_template("add_record.html", child_id=child_id)
+
+
+@ app.route("/edit_record/<record_id>", methods=["GET", "POST"])
+def edit_record(record_id):
+    if request.method == "POST":
+
+        record = Records.query.filter_by(id=record_id).first()
+
+        record.title = request.form.get("title")
+        record.activity = request.form.get("activity")
+        record.duration = request.form.get("duration")
+        record.quantity = request.form.get("quantity")
+        record.units = request.form.get("units")
+        record.location = request.form.get("location")
+        record.notes = request.form.get("notes")
+
+        db.session.commit()
+        flash("Record edited Successfully!")
+        return redirect(url_for("child_home", child_id=record.child_id))
+
+    record = Records.query.filter_by(
+        id=record_id).first()
+
+    return render_template("edit_record.html", record=record, child_id=record.child_id)
 
 
 @ app.route("/add_child", methods=["GET", "POST"])
@@ -147,7 +200,7 @@ def delete_child(child_id):
     db.session.commit()
 
     flash("child removed Successfully!")
-    return render_template("children_home.html")
+    return redirect(url_for("children_home"))
 
 
 @ app.route("/logout")

@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% for record in records %}
+{% if loop.index == 0 or loop.index % 3 == 1 %}
+<div class="row container">
+    {% endif %}
+    <div class="col s4">
+        <div class="card teal lighten-4">
+            <div class="card-content">
+                <div class="row">
+                    <span class="col s12 card-title">{{ record.title }}</span>
+                    <a href="{{ url_for('edit_record', record_id=record.id) }}"
+                        class="btn waves-effect waves-light btn-floating" id="add_record"><i class="fa fa-edit"></i></a>
+                    <p class="right col s3 offset-s3">{{ record.activity }}</p>
+                </div>
+            </div>
+            <div class="card-action">
+                <ul class="collapsible white">
+                    <li>
+                        <i class="fa fa-arrow-down left"></i>
+                        <div class="collapsible-header">Record information
+                        </div>
+                        <div class="collapsible-body white">
+                            <span>
+                                <p>Notes: {{ record.notes }}</p>
+                            </span>
+                            <span>
+                                <p>Duration: {{ record.duration }}</p>
+                            </span>
+                            <span>
+                                <p>Date: {{ record.date_time }}</p>
+                            </span>
+                            <span>
+                                <p>Quantity: {{ record.quantity }} {{ record.units }}</p>
+                            </span>
+                            <span>
+                                <p>Location: {{ record.location }}</p>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% if loop.index == 0 or loop.index % 3 == 0 %}
+</div>
+{% endif %}
+{% endfor %}
+</div>
+<div id="button_div" class="row">
+    <a href="{{ url_for('add_record', child_id=child_id) }}"
+        class="btn waves-effect waves-light btn-floating btn-large right" id="add_record"><i
+            class="material-icons">add</i></a>
+</div>
 {% endblock %}

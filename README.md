@@ -1,7 +1,9 @@
 <h1 align="center">Baby Journal</h1>
 <br> 
 <div align="center">
-[View the live project here.](#)
+  
+[View the live project here](https://milestone-project-3-flaskapp.herokuapp.com/)
+
 </div>
 <br> 
 

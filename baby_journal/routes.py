@@ -107,7 +107,7 @@ def child_home(child_id):
     return render_template("child_home.html", records=child_records, child_id=child_id)
 
 
-@ app.route("/add_record/<child_id>", methods=["GET", "POST"])
+@ app.route("/add_record/<int:child_id>", methods=["GET", "POST"])
 def add_record(child_id):
     if request.method == "POST":
 
@@ -132,7 +132,7 @@ def add_record(child_id):
     return render_template("add_record.html", child_id=child_id)
 
 
-@ app.route("/edit_record/<record_id>", methods=["GET", "POST"])
+@ app.route("/edit_record/<int:record_id>", methods=["GET", "POST"])
 def edit_record(record_id):
     if request.method == "POST":
 

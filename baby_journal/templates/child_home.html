@@ -32,7 +32,11 @@
                                 <p>Date: {{ record.date_time }}</p>
                             </span>
                             <span>
-                                <p>Quantity: {{ record.quantity }} {{ record.units }}</p>
+                                <p>Quantity: {{ record.quantity }}
+                                    {% if record.units %}
+                                    {{ record.units }}
+                                    {% endif %}
+                                </p>
                             </span>
                             <span>
                                 <p>Location: {{ record.location }}</p>

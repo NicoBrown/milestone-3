@@ -42,7 +42,7 @@ class Records(db.Model):
     title = db.Column(db.String(50), nullable=False)
     activity = db.Column(db.String(50), nullable=False)
     notes = db.Column(db.Text, nullable=True)
-    duration = db.Column(db.Integer, nullable=True)
+    duration = db.Column(db.String(10), nullable=True)
     date_time = db.Column(db.DateTime, nullable=False)
     units = db.Column(db.String(30), nullable=True)
     quantity = db.Column(db.Float, nullable=True)

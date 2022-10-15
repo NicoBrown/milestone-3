@@ -47,6 +47,11 @@ and a top menu on larger screen sizes:
 
 ### Colours
 
+The colours are complimentry shades from the standard set in the marterialise CSS library with lighter and darker modifiers applied.
+
+![image](https://user-images.githubusercontent.com/69271605/195979935-a12f6697-e6a7-4353-89cf-ffb7766f0a0e.png)
+
+
 ### Icons
 
 All icons are from font-awesome
@@ -58,6 +63,7 @@ All icons are from font-awesome
 The site is designed as mobile-first and to be responsive depending on the user media device. I created low fidelity wireframes in balsamiq cloud to plan the key features of the site which were the home, registration pages and the cards for entering and editing cards.
 
 The home page was deisgned with a hero-image and top navigation bar. The user can use the links to login and register from the nav-bar.
+
 ![image](https://user-images.githubusercontent.com/69271605/194308033-c3c16c8b-1269-408c-906a-1fb9de1f7732.png)
 
 when the user logs in they are presented with a home page showing their children, I created a low fidelity wireframe and mapped the links to other screens to help with my required app routing:
@@ -80,7 +86,7 @@ The user must be able to:
 - delete and edit a record
 
 ## Testing
-see [TESTING.md](https://github.com/NicoBrown/milestone-project-3/blob/77c29c106ac823389ca0eea1a823f62922b7eaa2/TESTING.md)
+see [TESTING.md](https://github.com/NicoBrown/milestone-3/edit/main/TESTING.md)
 
 ## Deployment
 

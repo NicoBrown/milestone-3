@@ -11,6 +11,7 @@ from baby_journal.database import Children, Records, User
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 
+
 from jinja2 import TemplateNotFound
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -102,9 +103,12 @@ def children_home():
 def child_home(child_id):
 
     child_records = Records.query.filter_by(
-        child_id=child_id).all()
+        child_id=child_id).order_by(Records.date_time.desc()).all()
 
-    return render_template("child_home.html", records=child_records, child_id=child_id)
+    child_record = Children.query.filter(
+        Children.id == child_id).first()
+
+    return render_template("child_home.html", records=child_records, child=child_record)
 
 
 @ app.route("/add_record/<int:child_id>", methods=["GET", "POST"])

@@ -11,7 +11,7 @@
                     <div class="input-field col s12">
                         <input id="record_title" name="title" type="text" minlength="4" maxlength="50" required
                             data-length="50">
-                        <label for="title">Title</label>
+                        <label for="record_title">Title</label>
                     </div>
                 </div>
                 <!-- activity type -->
@@ -38,8 +38,7 @@
                 <!-- duration -->
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="quantity" name="quantity" type="number" minlength="0" maxlength="5" data-length="5"
-                            validate>
+                        <input id="quantity" name="quantity" type="number" data-length="5">
                         <label for="quantity">Quantity (optional)</label>
                     </div>
                     <!-- units -->
@@ -65,14 +64,13 @@
                 <!-- notes -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="notes" name="notes" type="text" minlength="0" maxlength="50"
-                            data-length="50"></textarea>
+                        <textarea id="notes" name="notes" minlength="0" maxlength="50" data-length="50"></textarea>
                         <label for="notes">Notes (optional)</label>
                     </div>
                 </div>
                 <!-- add child -->
                 <div class="row">
-                    <a href="{{ url_for('child_home', child_id=child_id)}}" type="button"
+                    <a href="{{ url_for('child_home', child_id=child_id)}}"
                         class="col s4 offset-s1 btn-large indigo lighten-2 text-shadow">
                         Cancel<i class="fa-solid fa-circle-xmark right"></i>
                     </a>

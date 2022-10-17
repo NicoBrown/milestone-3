@@ -1,54 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="row container">
     <h3 class="center-align">Add child to Journal</h3>
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_child') }}">
-            <div class="card-panel">
-                <!-- first name -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="child_first_name" name="first_name" type="text" minlength="2" maxlength="50" required
-                            data-length="50">
-                        <label for="child_first_name">First Name</label>
-                    </div>
-                </div>
-                <!-- last name -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="child_last_name" name="last_name" type="text" minlength="2" maxlength="50" required
-                            data-length="50">
-                        <label for="child_last_name">Last Name</label>
-                    </div>
-                </div>
-                <!-- allergies -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <label for="child_allergies">Allergies (optional)</label>
-                        <input id="child_allergies" name="allergies" type="text" minlength="0" maxlength="50"
-                            data-length="50">
-                    </div>
-                </div>
-                <!-- age -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <label for="child_age">Date of birth</label>
-                        <input id="child_age" name="date_of_birth" type="text" type="text" class="datepicker" required>
-                    </div>
-                    <!-- add child -->
-                    <div class="row">
-                        <a href="{{ url_for('children_home')}}"
-                            class="col s4 offset-s1 btn-large indigo lighten-2 text-shadow">
-                            Cancel<i class="fa-solid fa-circle-xmark right"></i>
-                        </a>
-                        <button type="submit" class="col s4 offset-s2 btn-large indigo  lighten-2  text-shadow">
-                            Add child<i class="fa-solid fa-circle-plus right"></i>
-                        </button>
-                    </div>
+    <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('add_child') }}">
+        <div class="card-panel">
+            <!-- first name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="child_first_name" name="first_name" type="text" minlength="2" maxlength="50" required
+                        data-length="50">
+                    <label for="child_first_name">First Name</label>
                 </div>
             </div>
-        </form>
-    </div>
+            <!-- last name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="child_last_name" name="last_name" type="text" minlength="2" maxlength="50" required
+                        data-length="50">
+                    <label for="child_last_name">Last Name</label>
+                </div>
+            </div>
+            <!-- allergies -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="child_allergies">Allergies (optional)</label>
+                    <input id="child_allergies" name="allergies" type="text" minlength="0" maxlength="50"
+                        data-length="50">
+                </div>
+            </div>
+            <!-- age -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="child_age">Date of birth</label>
+                    <input id="child_age" name="date_of_birth" type="text" type="text" class="datepicker" required>
+                </div>
+                <!-- add child -->
+                <div class="row">
+                    <a href="{{ url_for('children_home')}}"
+                        class="col s4 offset-s1 btn-large indigo lighten-2 text-shadow">
+                        Cancel<i class="fa-solid fa-circle-xmark right"></i>
+                    </a>
+                    <button type="submit" class="col s4 offset-s2 btn-large indigo  lighten-2  text-shadow">
+                        Add child<i class="fa-solid fa-circle-plus right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}

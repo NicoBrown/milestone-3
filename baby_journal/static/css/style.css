@@ -61,3 +61,12 @@ main {
     bottom: 30px;
     left: 80%;
 }
+
+textarea {
+    display: block;
+    max-width: 100%;
+    resize: vertical;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

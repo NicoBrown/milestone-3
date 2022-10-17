@@ -157,7 +157,8 @@ The github deployment text was taken from the code institutes template
 
 ### Code
 
-the authorisation and login code was taken in part from a previous task project which was created as part of the code institutes coursework.
+The authorisation and login code was taken in part from a previous task project which was created as part of the code institutes coursework.
+Thanks to Cathy Dutton for the code used for the timer: [https://codepen.io/cathydutton/pen/xxpOOw?editors=0010](https://codepen.io/cathydutton/pen/xxpOOw?editors=0010)
 
 ### Media
  media and images provided by unspalsh

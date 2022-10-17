@@ -1,85 +1,94 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="row">
     <h3 class="center-align">Add New Record</h3>
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_record', child_id=child_id) }}">
-            <div class="card-panel">
-                <!-- title -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="record_title" name="title" type="text" minlength="4" maxlength="50" required
-                            data-length="50">
-                        <label for="record_title">Title</label>
-                    </div>
-                </div>
-                <!-- activity type -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <select id="activity" name="activity" required>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="feeding">Feeding</option>
-                            <option value="bottle">Bottle</option>
-                            <option value="sleep">Sleep</option>
-                            <option value="nappies">Nappies</option>
-                            <option value="weight">weight</option>
-                        </select>
-                        <label for="activity">Select Activity</label>
-                    </div>
-                </div>
-                <!-- duration -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="duration" name="duration" type="text" minlength="0" maxlength="50" data-length="50">
-                        <label for="duration">Duration in minutes (optional)</label>
-                    </div>
-                </div>
-                <!-- duration -->
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="quantity" name="quantity" type="number" data-length="5">
-                        <label for="quantity">Quantity (optional)</label>
-                    </div>
-                    <!-- units -->
-                    <div class="input-field col s5 offset-s1">
-                        <select id="units" name="units">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="ml">millilitre</option>
-                            <option value="kg">kilogram</option>
-                            <option value="lb">pounds</option>
-                            <option value="oz">ounces</option>
-                            <option value=" ">number</option>
-                        </select>
-                        <label for="units">Select units</label>
-                    </div>
-                </div>
-                <!-- location -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="location" name="location" type="text" minlength="0" maxlength="50" data-length="50">
-                        <label for="location">Location (optional)</label>
-                    </div>
-                </div>
-                <!-- notes -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="notes" name="notes" minlength="0" maxlength="50" data-length="50"></textarea>
-                        <label for="notes">Notes (optional)</label>
-                    </div>
-                </div>
-                <!-- add child -->
-                <div class="row">
-                    <a href="{{ url_for('child_home', child_id=child_id)}}"
-                        class="col s4 offset-s1 btn-large indigo lighten-2 text-shadow">
-                        Cancel<i class="fa-solid fa-circle-xmark right"></i>
-                    </a>
-                    <button type="submit" class="col s4 offset-s2 btn-large indigo lighten-2 text-shadow">
-                        Add record<i class="fa-solid fa-circle-plus right"></i>
-                    </button>
+    <form class="col s12 l8 offset-l2" method="POST" action="{{ url_for('add_record', child_id=child_id) }}">
+        <div class="card-panel">
+            <!-- title -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="record_title" name="title" type="text" minlength="4" maxlength="50" required
+                        data-length="50">
+                    <label for="record_title">Title</label>
                 </div>
             </div>
-        </form>
-    </div>
+            <!-- activity type -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="activity" name="activity" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="feeding">Feeding</option>
+                        <option value="bottle">Bottle</option>
+                        <option value="sleep">Sleep</option>
+                        <option value="nappies">Nappies</option>
+                        <option value="weight">Weight</option>
+                    </select>
+                    <label for="activity">Select Activity</label>
+                </div>
+            </div>
+            <!-- duration -->
+            <div class="row">
+                <div class="col s4 left fa-border">
+                    <h4>Timer</h4>
+                    <div class="col s12">
+                        <input type="button" value="START" id="timer-button" class="btn">
+                        <h5>
+                            <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
+                        </h5>
+                    </div>
+                </div>
+                <div class="input-field col s6 right">
+                    <input id="duration" name="duration" type="text" minlength="0" maxlength="50" data-length="50">
+                    <label id="durationLabel" for="duration">Duration mm:ss (optional)</label>
+                </div>
+                <div class="input-field col s3">
+                </div>
+            </div>
+            <!-- duration -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="quantity" name="quantity" type="number" data-length="5">
+                    <label for="quantity">Quantity (optional)</label>
+                </div>
+                <!-- units -->
+                <div class="input-field col s5 offset-s1">
+                    <select id="units" name="units">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="ml">millilitre</option>
+                        <option value="kg">kilogram</option>
+                        <option value="lb">pounds</option>
+                        <option value="oz">ounces</option>
+                        <option value=" ">number</option>
+                    </select>
+                    <label for="units">Select units</label>
+                </div>
+            </div>
+            <!-- location -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="location" name="location" type="text" minlength="0" maxlength="50" data-length="50">
+                    <label for="location">Location (optional)</label>
+                </div>
+            </div>
+            <!-- notes -->
+            <div class="row">
+                <div class="input-field col s12 content">
+                    <textarea id="notes" name="notes" minlength="0" maxlength="50" data-length="50"></textarea>
+                    <label for="notes">Notes (optional)</label>
+                </div>
+            </div>
+            <!-- add child -->
+            <div class="row">
+                <a href="{{ url_for('child_home', child_id=child_id)}}"
+                    class="col s4 offset-s1 btn-large indigo lighten-2 text-shadow">
+                    Cancel<i class="fa-solid fa-circle-xmark right"></i>
+                </a>
+                <button type="submit" class="col s4 offset-s2 btn-large indigo lighten-2 text-shadow">
+                    Add record<i class="fa-solid fa-circle-plus right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}

@@ -86,7 +86,7 @@ The user must be able to:
 - delete and edit a record
 
 ## Testing
-see [TESTING.md](https://github.com/NicoBrown/milestone-project-3/blob/77c29c106ac823389ca0eea1a823f62922b7eaa2/TESTING.md)
+see [TESTING.md](TESTING.md)
 
 ## Deployment
 
